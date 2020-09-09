@@ -21,6 +21,7 @@ function intervalUpdate()
     minutes = currentDate[2].split(' ')[1].split(':')[1];
     afternoon = currentDate[2].split(' ')[2] === 'PM';
 
+    console.log(hours, minutes, afternoon);
     if (hours === '7' && minutes === '10'&& afternoon) {
         reminder_list.forEach(el => {
             client.channels.cache.get(el.channel).send('@everyone : ' + el.msg);
