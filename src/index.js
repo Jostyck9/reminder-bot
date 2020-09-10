@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
-const token = process.env.TOKEN || "";
+const token = process.env.TOKEN || '';
+const hourToRemind = process.env.HOUR || '10';
+const minToRemind = process.env.MIN || '00';
 const client = new Discord.Client();
 
 /**
@@ -21,8 +23,7 @@ function intervalUpdate()
     minutes = currentDate[2].split(' ')[1].split(':')[1];
     afternoon = currentDate[2].split(' ')[2] === 'PM';
 
-    console.log(hours, minutes, afternoon);
-    if (hours === '7' && minutes === '13'&& afternoon) {
+    if (hours === hourToRemind && minutes === minToRemind && afternoon) {
         reminder_list.forEach(el => {
             client.channels.cache.get(el.channel).send('@everyone : ' + el.msg);
         });
