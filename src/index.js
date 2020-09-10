@@ -23,7 +23,7 @@ function intervalUpdate()
     minutes = currentDate[2].split(' ')[1].split(':')[1];
     afternoon = currentDate[2].split(' ')[2] === 'PM';
 
-    if (hours === hourToRemind && minutes === minToRemind && afternoon) {
+    if (hours === hourToRemind && minutes === minToRemind && !afternoon) {
         reminder_list.forEach(el => {
             client.channels.cache.get(el.channel).send('@everyone : ' + el.msg);
         });
