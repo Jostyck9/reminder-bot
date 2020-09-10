@@ -45,9 +45,6 @@ client.on('ready', () => {
 client.on('message', msg => {
     words = filterContent(msg.content)
 
-    if (words.length !== 2)
-        return;
-
     if (words[0] === '!help') {
         msg.reply("You can only do a simple cmd to remind someting everyday: remind [...]");
     }
