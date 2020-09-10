@@ -48,11 +48,15 @@ client.on('message', msg => {
     if (words.length !== 2)
         return;
 
+    if (words[0] === '!help') {
+        msg.reply("You can only do a simple cmd to remind someting everyday: remind [...]");
+    }
+
     if (words[0] === 'remind') {
         msg.reply("Bot will remind it for you everyday at 10am");
         reminder_list.push({
             channel: msg.channel.id,
-            msg: words[1]
+            msg: msg.content.replace('remind ', '')
         });
     }
 });
